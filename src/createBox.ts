@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View} from '@tarojs/components';
 
 import createRestyleComponent from './createRestyleComponent';
 import {BaseTheme, RestyleFunctionContainer} from './types';
@@ -27,9 +27,9 @@ import {
 } from './restyleFunctions';
 
 type BaseBoxProps<Theme extends BaseTheme> = BackgroundColorProps<Theme> &
-  OpacityProps<Theme> &
-  VisibleProps<Theme> &
-  LayoutProps<Theme> &
+  OpacityProps &
+  VisibleProps &
+  LayoutProps &
   SpacingProps<Theme> &
   BorderProps<Theme> &
   ShadowProps<Theme> &
@@ -61,9 +61,7 @@ const createBox = <
   Theme extends BaseTheme,
   Props = React.ComponentProps<typeof View> & {children?: React.ReactNode},
   EnableShorthand extends boolean = true,
->(
-  BaseComponent: React.ComponentType<any> = View,
-) => {
+>() => {
   return createRestyleComponent<
     BoxProps<Theme, EnableShorthand> &
       Omit<Props, keyof BoxProps<Theme, EnableShorthand>>,
@@ -73,7 +71,7 @@ const createBox = <
       BoxProps<Theme, EnableShorthand>,
       Theme
     >[],
-    BaseComponent,
+    View,
   );
 };
 

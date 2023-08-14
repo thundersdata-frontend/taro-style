@@ -1,19 +1,18 @@
 import React from 'react';
-import {View} from 'react-native';
 
 import composeRestyleFunctions from './composeRestyleFunctions';
 import {BaseTheme, RestyleFunctionContainer} from './types';
 import useRestyle from './hooks/useRestyle';
 
 const createRestyleComponent = <
-  Props extends {[key: string]: any},
+  Props extends Record<string, any>,
   Theme extends BaseTheme,
 >(
   restyleFunctions: (
     | RestyleFunctionContainer<Props, Theme>
     | RestyleFunctionContainer<Props, Theme>[]
   )[],
-  BaseComponent: React.ComponentType<any> = View,
+  BaseComponent: React.ComponentType<any>,
 ) => {
   const composedRestyleFunction = composeRestyleFunctions(restyleFunctions);
 

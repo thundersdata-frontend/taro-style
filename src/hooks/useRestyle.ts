@@ -1,13 +1,12 @@
-import {useMemo} from 'react';
-import {StyleProp, useWindowDimensions} from 'react-native';
+import {CSSProperties, useMemo} from 'react';
 
-import {BaseTheme, RNStyle, Dimensions} from '../types';
+import {BaseTheme, Dimensions} from '../types';
 
 import useTheme from './useTheme';
 
 const filterRestyleProps = <
   TRestyleProps,
-  TProps extends {[key: string]: unknown} & TRestyleProps,
+  TProps extends Record<string, any> & TRestyleProps,
 >(
   componentProps: TProps,
   omitPropertiesMap: {[key in keyof TProps]: boolean},
@@ -34,7 +33,7 @@ const filterRestyleProps = <
 const useRestyle = <
   Theme extends BaseTheme,
   TRestyleProps extends {[key: string]: any},
-  TProps extends TRestyleProps & {style?: StyleProp<RNStyle>},
+  TProps extends TRestyleProps & {style?: CSSProperties},
 >(
   composedRestyleFunction: {
     buildStyle: <TInputProps extends TProps>(
@@ -46,51 +45,35 @@ const useRestyle = <
         theme: Theme;
         dimensions: Dimensions | null;
       },
-    ) => RNStyle;
+    ) => CSSProperties;
     properties: (keyof TProps)[];
     propertiesMap: {[key in keyof TProps]: boolean};
   },
   props: TProps,
 ) => {
   const theme = useTheme<Theme>();
-
-  // Theme should not change between renders, so we can disable rules-of-hooks
-  // We want to avoid calling useWindowDimensions if breakpoints are not defined
-  // as this hook is called extremely often and incurs some performance hit.
-  const dimensions = theme.breakpoints
-    ? // eslint-disable-next-line react-hooks/rules-of-hooks
-      useWindowDimensions()
-    : null;
-
   const {cleanProps, restyleProps, serializedRestyleProps} = filterRestyleProps(
     props,
     composedRestyleFunction.propertiesMap,
   );
 
-  const calculatedStyle: StyleProp<RNStyle> = useMemo(() => {
+  const calculatedStyle = useMemo(() => {
     const style = composedRestyleFunction.buildStyle(restyleProps as TProps, {
       theme,
-      dimensions,
+      dimensions: null,
     });
 
-    const styleProp: StyleProp<RNStyle> = props.style;
-    if (typeof styleProp === 'function') {
-      return ((...args: any[]) =>
-        [style, styleProp(...args)].filter(Boolean)) as StyleProp<RNStyle>;
-    }
-    return [style, styleProp].filter(Boolean);
+    const styleProp = props.style;
+    return {
+      ...style,
+      ...styleProp,
+    };
 
     // We disable the exhaustive deps rule here in order to trigger the useMemo
     // when the serialized string of restyleProps changes instead of the object
     // reference which will change on every render.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    theme,
-    dimensions,
-    props.style,
-    serializedRestyleProps,
-    composedRestyleFunction,
-  ]);
+  }, [theme, props.style, serializedRestyleProps, composedRestyleFunction]);
 
   cleanProps.style = calculatedStyle;
   return cleanProps;

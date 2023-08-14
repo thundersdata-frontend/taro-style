@@ -1,3 +1,19 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets: [
+    [
+      'taro',
+      {
+        framework: 'react',
+        ts: true,
+      },
+    ],
+  ],
+  plugins: [
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
+      },
+    ],
+  ],
 };

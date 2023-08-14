@@ -1,36 +1,30 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "plugin:@shopify/typescript",
-    "plugin:@shopify/react",
-    "plugin:@shopify/jest",
-    "plugin:@shopify/prettier"
+    "plugin:@typescript-eslint/recommended",
+    "taro/react",
+    "plugin:import/typescript"
   ],
+  "plugins": ["@typescript-eslint", "import", "react-hooks"],
+  "settings": {
+    //自动发现React的版本，从而进行规范react代码
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
   "parserOptions": {
-    "ecmaVersion": 6
+    //指定ESLint可以解析JSX语法
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "rules": {
-    "import/extensions": "off",
-    "jsx-a11y/control-has-associated-label": "off",
-    "node/no-extraneous-require": "off",
-    "import/no-cycle": "off",
-    "jest/require-tothrow-message": "off",
-    "callback-return": "off",
-    "jest/no-if": "off",
-    "import/named": "off",
-    "func-style": "off",
-    "react/display-name": "off",
-    "id-length": "off",
-    "@shopify/restrict-full-import": ["error", "lodash"],
-    "no-process-env": "off",
-    "@shopify/jsx-no-hardcoded-content": "off",
-    "@typescript-eslint/naming-convention": [
-      "off",
-      {
-        "selector": "typeParameter",
-        "format": ["PascalCase"],
-        "prefix": ["T"]
-      }
-    ]
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 2,
+    "@typescript-eslint/no-explicit-any": 0
   },
   "ignorePatterns": ["node_modules", "dist"]
 }

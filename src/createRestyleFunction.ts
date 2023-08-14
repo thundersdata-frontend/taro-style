@@ -1,13 +1,11 @@
+import {CSSProperties} from 'react';
 import {getThemeValue} from './utilities';
 import {
   BaseTheme,
   Dimensions,
-  ResponsiveBaseTheme,
   RestyleFunction,
-  RNStyleProperty,
   StyleTransformFunction,
 } from './types';
-import {getResponsiveValue} from './utilities/getResponsiveValue';
 
 const getMemoizedMapHashKey = (
   dimensions: Dimensions | null,
@@ -22,10 +20,10 @@ const memoizedThemes: WeakMap<BaseTheme, any> = new WeakMap();
 
 const createRestyleFunction = <
   Theme extends BaseTheme = BaseTheme,
-  TProps extends {[key: string]: any} = {[key: string]: any},
+  TProps extends Record<string, any> = Record<string, any>,
   P extends keyof TProps = keyof TProps,
   K extends keyof Theme | undefined = undefined,
-  S extends RNStyleProperty = RNStyleProperty,
+  S extends keyof CSSProperties = keyof CSSProperties,
 >({
   property,
   transform,
@@ -100,16 +98,7 @@ const createRestyleFunction = <
     }
 
     const value = (() => {
-      if (isResponsiveTheme(theme) && dimensions) {
-        return getResponsiveValue(props[property], {
-          theme,
-          dimensions,
-          themeKey,
-          transform,
-        });
-      } else {
-        return getThemeValue(props[property], {theme, themeKey, transform});
-      }
+      return getThemeValue(props[property], {theme, themeKey, transform});
     })();
     if (value === undefined) return {};
 
@@ -131,14 +120,5 @@ const createRestyleFunction = <
     func,
   };
 };
-
-function isResponsiveTheme(
-  theme: BaseTheme | ResponsiveBaseTheme,
-): theme is ResponsiveBaseTheme {
-  if (theme.breakpoints !== undefined) {
-    return true;
-  }
-  return false;
-}
 
 export default createRestyleFunction;

@@ -1,10 +1,8 @@
-import {StyleSheet, ViewStyle} from 'react-native';
-
+import {CSSProperties} from 'react';
 import {
   RestyleFunctionContainer,
   BaseTheme,
   Dimensions,
-  RNStyle,
   RestyleFunction,
 } from './types';
 import {AllProps} from './restyleFunctions';
@@ -35,7 +33,7 @@ const composeRestyleFunctions = <
 
   const funcsMap = flattenedRestyleFunctions.reduce(
     (acc, each) => ({[each.property]: each.func, ...acc}),
-    {} as {[key in keyof TProps]: RestyleFunction<TProps, Theme, string>},
+    {} as {[key in keyof TProps]: RestyleFunction<TProps, Theme>},
   );
 
   // TInputProps is a superset of TProps since TProps are only the Restyle Props
@@ -48,21 +46,20 @@ const composeRestyleFunctions = <
       theme: Theme;
       dimensions: Dimensions | null;
     },
-  ): RNStyle => {
-    const styles: ViewStyle = {};
+  ) => {
+    const styles: any = {};
     const options = {theme, dimensions};
     // We make the assumption that the props object won't have extra prototype keys.
     // eslint-disable-next-line guard-for-in
     for (const key in props) {
-      const mappedProps = funcsMap[key](props, options);
+      const mappedProps = funcsMap[key](props, options) as any;
       // eslint-disable-next-line guard-for-in
       for (const mappedKey in mappedProps) {
-        styles[mappedKey as keyof ViewStyle] = mappedProps[mappedKey];
+        styles[mappedKey] = mappedProps[mappedKey];
       }
     }
 
-    const {stylesheet} = StyleSheet.create({stylesheet: styles});
-    return stylesheet;
+    return styles as CSSProperties;
   };
   return {
     buildStyle,

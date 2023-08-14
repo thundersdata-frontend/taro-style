@@ -1,8 +1,6 @@
-import {StyleSheet} from 'react-native';
-
+import {CSSProperties} from 'react';
 import {
   BaseTheme,
-  ResponsiveValue,
   RestyleFunctionContainer,
   RestyleFunction,
   SafeVariants,
@@ -58,15 +56,15 @@ function createVariant<
       ? (theme[themeKey].defaults as Partial<AllProps<Theme>>)
       : {};
 
-    if (!expandedProps && !defaults && !variantDefaults) return {};
-    return StyleSheet.flatten(
-      allRestyleFunctions.buildStyle(
-        {...defaults, ...variantDefaults, ...expandedProps},
-        {
-          theme,
-          dimensions,
-        },
-      ),
+    if (!expandedProps && !defaults && !variantDefaults)
+      return {} as CSSProperties;
+
+    return allRestyleFunctions.buildStyle(
+      {...defaults, ...variantDefaults, ...expandedProps},
+      {
+        theme,
+        dimensions,
+      },
     );
   };
   return {
@@ -82,10 +80,7 @@ export type VariantProps<
   K extends keyof Theme,
   Property extends keyof any = 'variant',
 > = {
-  [key in Property]?: ResponsiveValue<
-    keyof Omit<Theme[K], 'defaults'>,
-    Theme['breakpoints']
-  >;
+  [key in Property]?: keyof Omit<Theme[K], 'defaults'>;
 };
 
 export default createVariant;

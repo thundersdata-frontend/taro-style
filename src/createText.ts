@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text} from '@tarojs/components';
 
 import createRestyleComponent from './createRestyleComponent';
 import {BaseTheme, RestyleFunctionContainer} from './types';
@@ -22,9 +22,9 @@ import {
 import createVariant, {VariantProps} from './createVariant';
 
 type BaseTextProps<Theme extends BaseTheme> = ColorProps<Theme> &
-  OpacityProps<Theme> &
-  VisibleProps<Theme> &
-  TypographyProps<Theme> &
+  OpacityProps &
+  VisibleProps &
+  TypographyProps &
   SpacingProps<Theme> &
   TextShadowProps<Theme> &
   VariantProps<Theme, 'textVariants'>;
@@ -51,9 +51,7 @@ const createText = <
   Theme extends BaseTheme,
   Props = React.ComponentProps<typeof Text> & {children?: React.ReactNode},
   EnableShorthand extends boolean = true,
->(
-  BaseComponent: React.ComponentType<any> = Text,
-) => {
+>() => {
   return createRestyleComponent<
     TextProps<Theme, EnableShorthand> &
       Omit<Props, keyof TextProps<Theme, EnableShorthand>>,
@@ -63,7 +61,7 @@ const createText = <
       TextProps<Theme, EnableShorthand>,
       Theme
     >[],
-    BaseComponent,
+    Text,
   );
 };
 
