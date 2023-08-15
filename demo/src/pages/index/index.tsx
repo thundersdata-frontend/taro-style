@@ -1,8 +1,9 @@
-import {View, Text} from '@tarojs/components';
 import {useLoad} from '@tarojs/taro';
-import './index.less';
 
-import Box from '../../components/Box';
+import Box from '@/components/box';
+import Text from '@/components/text';
+
+import './index.less';
 
 export default function Index() {
   useLoad(() => {
@@ -10,8 +11,10 @@ export default function Index() {
   });
 
   return (
-    <Box>
-      <Text>Hello world!</Text>
+    <Box backgroundColor='primary200' m='x5' p='x2' borderRadius='x2'>
+      <Text color='white' variant='h2'>
+        Hello world!
+      </Text>
     </Box>
   );
 }

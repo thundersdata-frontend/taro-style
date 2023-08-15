@@ -21,7 +21,7 @@ export interface KnownBaseTheme {
     [key: string]: number;
   };
   borderRadii?: {
-    [key: string]: number;
+    [key: string]: number | string;
   };
 }
 

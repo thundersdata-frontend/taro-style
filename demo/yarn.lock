@@ -2298,9 +2298,10 @@
     webpack-format-messages "^2.0.6"
     webpackbar "^5.0.2"
 
-"@td-design/taro-style@link:..":
-  version "0.0.0"
-  uid ""
+"@td-design/taro-style@^0.0.1-alpha":
+  version "0.0.1-alpha"
+  resolved "https://registry.npmmirror.com/@td-design/taro-style/-/taro-style-0.0.1-alpha.tgz#9f368d71be96481e7c0dff9077e570424001bcd2"
+  integrity sha512-vDepRRuOIC2+giNpQwgJFi1Lj8LqUsh96eVw/4EfAh32uTpmPw1/og+zxIm2meEa/Fy9jkgePvCuw45RLHBMbQ==
 
 "@tootallnate/once@2":
   version "2.0.0"

@@ -1,6 +1,8 @@
 import { PropsWithChildren } from 'react'
 import { useLaunch } from '@tarojs/taro'
+import { ThemeProvider } from '@td-design/taro-style'
 import './app.less'
+import {lightTheme} from './components/theme';
 
 function App({ children }: PropsWithChildren<any>) {
 
@@ -9,7 +11,7 @@ function App({ children }: PropsWithChildren<any>) {
   })
 
   // children 是将要会渲染的页面
-  return children
+  return <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>;
 }
 
 export default App
