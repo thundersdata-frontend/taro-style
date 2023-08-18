@@ -3,9 +3,13 @@ export default defineAppConfig({
     'pages/index/index'
   ],
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
-  }
+    "navigationBarBackgroundColor": "@navBgColor",
+    // @ts-ignore
+    "navigationBarTextStyle": "@navTxtStyle",
+    "backgroundColor": "@bgColor",
+    // @ts-ignore
+    "backgroundTextStyle": "@bgTxtStyle",
+  },
+  themeLocation: 'theme.json',
+  darkmode: true,
 })

@@ -108,6 +108,8 @@ const lightTheme = createTheme({
     text_active: palette.white,
     primary_text: palette.black,
     primary_background: palette.white,
+    cardPrimaryBackground: palette.func300,
+    cardSecondaryBackground: palette.func600,
   },
   textVariants: {
     defaults: {},
@@ -171,6 +173,18 @@ const lightTheme = createTheme({
     d8: {},
     d9: {},
   },
+  cardVariants: {
+    defaults: {
+      padding: 'x3', // 这里的优先级，比createVariant方法的defaults里面的高，所以不会被覆盖掉
+      borderRadius: 'x2',
+    },
+    primary: {
+      backgroundColor: 'cardPrimaryBackground',
+    },
+    secondary: {
+      backgroundColor: 'cardSecondaryBackground',
+    },
+  },
   theme: 'light',
 });
 export type Theme = typeof lightTheme;
@@ -220,6 +234,8 @@ const darkTheme: Theme = {
     text_active: darkPalette.white,
     primary_text: palette.white,
     primary_background: palette.black,
+    cardPrimaryBackground: palette.func300,
+    cardSecondaryBackground: palette.func600,
   },
   theme: 'dark',
 };
