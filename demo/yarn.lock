@@ -1781,6 +1781,14 @@
     "@taro-hooks/blueimp-canvas-to-blob" "2.0.5"
     is-blob "^2.1.0"
 
+"@taro-hooks/plugin-react@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.npmmirror.com/@taro-hooks/plugin-react/-/plugin-react-2.0.5.tgz#f1d739d1fe8d192f14fd6008ac3403b863970c53"
+  integrity sha512-MLaKLOY8o8wg6UxhKcZ6e+zEDHVi62VmnMsfL9CPh6I7ahNbYcB1aMECDtPpVok9QBXhrO8dndnDk4kPohrwDw==
+  dependencies:
+    acorn "^8.8.2"
+    acorn-walk "^8.2.0"
+
 "@taro-hooks/shared@2.0.5":
   version "2.0.5"
   resolved "https://registry.npmmirror.com/@taro-hooks/shared/-/shared-2.0.5.tgz#c09aac0422650242219d8afba493aa89eb4aa487"

@@ -17,14 +17,14 @@ export default defineConfig(async (merge, { command, mode }) => {
     },
     sourceRoot: 'src',
     outputRoot: 'dist',
-    plugins: [],
+    plugins: ['@taro-hooks/plugin-react'],
     defineConstants: {},
     copy: {
       patterns: [
         {
           from: 'theme.json',
           to: 'dist/theme.json',
-        }
+        },
       ],
       options: {},
     },
