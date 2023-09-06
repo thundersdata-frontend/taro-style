@@ -1,5 +1,5 @@
 import Taro, {useLoad} from '@tarojs/taro';
-import {View, Text as TaroText} from '@tarojs/components';
+import {View, Text as TaroText, Button as TaroButton} from '@tarojs/components';
 import { useState, useRef } from '@taro-hooks/core';
 import { useEnv } from 'taro-hooks';
 
@@ -52,6 +52,8 @@ export default function Index() {
         </Text>
       </Card>
       <Button
+        type='primary'
+        size='default'
         title='bounce动画'
         onPress={handleClick}
         borderWidth={1}
@@ -62,6 +64,14 @@ export default function Index() {
         backgroundColor='func300'
         marginTop='x2'
       />
+      <TaroButton
+        type='primary'
+        size='default'
+        loading={false}
+        onClick={() => console.log('aaa')}
+      >
+        按钮
+      </TaroButton>
     </>
   );
 }

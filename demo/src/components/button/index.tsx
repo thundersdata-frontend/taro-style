@@ -8,9 +8,8 @@ import {
   border,
   useRestyle,
 } from '@td-design/taro-style';
-import {View, ViewProps} from '@tarojs/components';
+import {ButtonProps, Button as TaroButton} from '@tarojs/components';
 import {Theme} from '../theme';
-import Text from '../text';
 
 type RestyleProps = SpacingProps<Theme> &
   BorderProps<Theme> &
@@ -22,19 +21,19 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   backgroundColor,
 ]);
 
-type ButtonProps = RestyleProps &
-  Pick<ViewProps, 'style' | 'className'> & {
+type BaseButtonProps = RestyleProps &
+  Omit<ButtonProps, 'onClick'> & {
     onPress: () => void;
-    title: string;
+    title: React.ReactNode;
   };
 
-const Button = ({title, onPress, ...rest}: ButtonProps) => {
+const Button = ({title, onPress, ...rest}: BaseButtonProps) => {
   const props = useRestyle(restyleFunctions, rest as any);
 
   return (
-    <View onClick={onPress} {...props}>
-      <Text>{title}</Text>
-    </View>
+    <TaroButton onClick={onPress} {...props}>
+      {title}
+    </TaroButton>
   );
 };
 
