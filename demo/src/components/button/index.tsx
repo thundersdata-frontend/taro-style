@@ -28,12 +28,11 @@ type ButtonProps = RestyleProps &
     title: string;
   };
 
-const Button = ({title, onPress, style, className}: ButtonProps) => {
-  const props = useRestyle(restyleFunctions, {style, className} as any);
-  console.log(...props);
+const Button = ({title, onPress, ...rest}: ButtonProps) => {
+  const props = useRestyle(restyleFunctions, rest as any);
 
   return (
-    <View onClick={onPress}>
+    <View onClick={onPress} {...props}>
       <Text>{title}</Text>
     </View>
   );
