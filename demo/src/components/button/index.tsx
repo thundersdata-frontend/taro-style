@@ -8,7 +8,7 @@ import {
   border,
   useRestyle,
 } from '@td-design/taro-style';
-import {View} from '@tarojs/components';
+import {View, ViewProps} from '@tarojs/components';
 import {Theme} from '../theme';
 import Text from '../text';
 
@@ -23,16 +23,17 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
 ]);
 
 type ButtonProps = RestyleProps &
-  {
+  Pick<ViewProps, 'style' | 'className'> & {
     onPress: () => void;
     title: string;
   };
 
-const Button = ({title, onPress, ...rest}: ButtonProps) => {
-  const props = useRestyle(restyleFunctions, rest as any);
+const Button = ({title, onPress, style, className}: ButtonProps) => {
+  const props = useRestyle(restyleFunctions, {style, className} as any);
+  console.log(...props);
 
   return (
-    <View onClick={onPress} style={props.style}>
+    <View onClick={onPress}>
       <Text>{title}</Text>
     </View>
   );

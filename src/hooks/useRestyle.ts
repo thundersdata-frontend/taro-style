@@ -76,7 +76,7 @@ const useRestyle = <
   }, [theme, props.style, serializedRestyleProps, composedRestyleFunction]);
 
   cleanProps.style = calculatedStyle;
-  return cleanProps as {style: CSSProperties};
+  return cleanProps;
 };
 
 export default useRestyle;

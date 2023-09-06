@@ -56,6 +56,8 @@ export default function Index() {
         padding='x4'
         backgroundColor='func300'
         marginTop='x2'
+        style={{backgroundColor: 'red'}}
+        className='hello'
       />
     </>
   );
