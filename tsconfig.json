@@ -15,7 +15,8 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "baseUrl": "./src",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "composite": true
   },
   "extends": "./shared/tsconfig.base.json",
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
