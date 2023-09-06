@@ -2378,10 +2378,10 @@
     webpack-format-messages "^2.0.6"
     webpackbar "^5.0.2"
 
-"@td-design/taro-style@^0.0.1-alpha":
-  version "0.0.1-alpha"
-  resolved "https://registry.npmmirror.com/@td-design/taro-style/-/taro-style-0.0.1-alpha.tgz#9f368d71be96481e7c0dff9077e570424001bcd2"
-  integrity sha512-vDepRRuOIC2+giNpQwgJFi1Lj8LqUsh96eVw/4EfAh32uTpmPw1/og+zxIm2meEa/Fy9jkgePvCuw45RLHBMbQ==
+"@td-design/taro-style@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmmirror.com/@td-design/taro-style/-/taro-style-0.1.0.tgz#373d2fe6f16650acb4a5fc488470fca21c82cd79"
+  integrity sha512-pAWBS1Z5Ik+lKKZBBF7DspRUBulh1A7THgAWDUZdixBncn6ib5SIJM/GHFO50cNXMvUw7Amo1IyDN8Vi71TxeA==
 
 "@tootallnate/once@2":
   version "2.0.0"
