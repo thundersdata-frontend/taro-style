@@ -1,6 +1,7 @@
 import {PropsWithChildren} from 'react';
 import {ThemeProvider} from '@td-design/taro-style';
 import useChangeTheme from './pages/useChangeTheme';
+import './animate.css';
 
 function Main({children}: PropsWithChildren<any>) {
   const {theme} = useChangeTheme.useModel();

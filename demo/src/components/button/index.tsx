@@ -22,16 +22,17 @@ const restyleFunctions = composeRestyleFunctions<Theme, RestyleProps>([
   backgroundColor,
 ]);
 
-type ButtonProps = RestyleProps & {
-  onPress: () => void;
-  title: string;
-};
+type ButtonProps = RestyleProps &
+  {
+    onPress: () => void;
+    title: string;
+  };
 
 const Button = ({title, onPress, ...rest}: ButtonProps) => {
-  const props = useRestyle(restyleFunctions, rest);
+  const props = useRestyle(restyleFunctions, rest as any);
 
   return (
-    <View onClick={onPress} {...props}>
+    <View onClick={onPress} style={props.style}>
       <Text>{title}</Text>
     </View>
   );

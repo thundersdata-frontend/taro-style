@@ -54,6 +54,7 @@
     "@tarojs/shared": "3.6.13",
     "@tarojs/taro": "3.6.13",
     "@td-design/taro-style": "^0.0.1-alpha",
+    "animate.css": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "taro-hooks": "^2.0.5"

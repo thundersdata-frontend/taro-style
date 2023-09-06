@@ -1,6 +1,6 @@
 {
   "name": "@td-design/taro-style",
-  "version": "0.0.1-alpha",
+  "version": "0.1.0",
   "license": "MIT",
   "description": "A system for building constraint-based UI components",
   "main": "dist/index.js",
