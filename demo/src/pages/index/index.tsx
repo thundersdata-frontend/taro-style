@@ -1,6 +1,7 @@
-import {useRef} from 'react';
 import Taro, {useLoad} from '@tarojs/taro';
 import {View, Text as TaroText} from '@tarojs/components';
+import { useState, useRef } from '@taro-hooks/core';
+import { useEnv } from 'taro-hooks';
 
 import Box from '@/components/box';
 import Card from '@/components/card';
@@ -12,6 +13,10 @@ import './index.css';
 
 export default function Index() {
   const ref = useRef<typeof View>(null);
+  const [] = useState();
+
+  const env = useEnv();
+  console.log(env);
 
   useLoad(() => {
     console.log('Page loaded.');
