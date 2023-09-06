@@ -37,6 +37,7 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.22.10",
+    "@taro-hooks/plugin-auto-import": "^2.0.5",
     "@taro-hooks/plugin-react": "^2.0.5",
     "@tarojs/components": "3.6.13",
     "@tarojs/helper": "3.6.13",

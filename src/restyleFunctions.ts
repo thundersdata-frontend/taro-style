@@ -322,7 +322,7 @@ export type BorderProps<Theme extends BaseTheme> = {
 } & {
   [Key in keyof typeof borderRadiusProperties]?: Theme['borderRadii'] extends object
     ? keyof Theme['borderRadii']
-    : number;
+    : number | string;
 };
 
 export type ShadowProps<Theme extends BaseTheme> = {

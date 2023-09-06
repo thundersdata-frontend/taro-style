@@ -61,6 +61,7 @@ const composeRestyleFunctions = <
 
     return styles as CSSProperties;
   };
+
   return {
     buildStyle,
     properties,

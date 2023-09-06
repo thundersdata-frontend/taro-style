@@ -8,7 +8,7 @@ export default defineConfig(async (merge, { command, mode }) => {
   const baseConfig: UserConfigExport = {
     projectName: 'myApp',
     date: '2023-8-14',
-    designWidth: 750,
+    designWidth: 375,
     deviceRatio: {
       640: 2.34 / 2,
       750: 1,
@@ -17,7 +17,12 @@ export default defineConfig(async (merge, { command, mode }) => {
     },
     sourceRoot: 'src',
     outputRoot: 'dist',
-    plugins: ['@taro-hooks/plugin-react'],
+    plugins: [
+      // 若使用 React/PReact/Nerv, 请预先安装 @taro-hooks/plugin-react 插件
+      '@taro-hooks/plugin-react',
+      // 最后配置 auto-import 插件 (此为直接使用不需要客制化的情况)
+      '@taro-hooks/plugin-auto-import',
+    ],
     defineConstants: {},
     copy: {
       patterns: [

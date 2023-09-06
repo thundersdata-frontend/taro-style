@@ -1,6 +1,6 @@
 import Taro, {useLaunch} from '@tarojs/taro';
 import {useMemo, useState} from 'react';
-import {lightTheme, darkTheme} from '@/components/theme';
+import {createDarkTheme, createLightTheme} from '@/components/theme';
 import {createShareModel} from '@/createShareModel';
 
 function useChangeTheme() {
@@ -16,7 +16,10 @@ function useChangeTheme() {
     });
   });
 
-  const theme = useMemo(() => (dark ? darkTheme : lightTheme), [dark]);
+  const theme = useMemo(
+    () => (dark ? createDarkTheme() : createLightTheme()),
+    [dark],
+  );
 
   return {
     theme,

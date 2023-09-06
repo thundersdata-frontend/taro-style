@@ -1,20 +1,23 @@
-import {useLoad} from '@tarojs/taro';
+import Taro, {useLoad} from '@tarojs/taro';
 
 import Box from '@/components/box';
 import Card from '@/components/card';
 import Text from '@/components/text';
 import Button from '@/components/button';
-import useChangeTheme from '@/pages/useChangeTheme';
+import { View, Text as TaroText } from '@tarojs/components';
+import './index.css';
+
 
 export default function Index() {
   useLoad(() => {
     console.log('Page loaded.');
   });
 
-  const { changeTheme } = useChangeTheme.useModel();
-
   return (
     <>
+      <View style={{margin: Taro.pxTransform(20), padding: 20}} className='hello'>
+        <TaroText>hello</TaroText>
+      </View>
       <Box backgroundColor='primary200' m='x5' p='x2' borderRadius='x2'>
         <Text color='white' variant='h2'>
           Hello world!
@@ -31,17 +34,6 @@ export default function Index() {
           it changes this screen
         </Text>
       </Card>
-      <Button
-        title='切换主题'
-        onPress={changeTheme}
-        borderWidth={1}
-        borderStyle='solid'
-        borderColor='primary200'
-        borderRadius='x2'
-        padding='x4'
-        backgroundColor='func300'
-        marginTop='x2'
-      />
     </>
   );
 }

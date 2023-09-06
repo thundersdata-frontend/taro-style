@@ -48,146 +48,147 @@ const palette = {
   gray900: 'transparent',
 };
 
-const lightTheme = createTheme({
-  spacing: {
-    x0: px(0),
-    x1: px(4),
-    x2: px(8),
-    x3: px(12),
-    x4: px(16),
-    x5: px(20),
-    x6: px(24),
-    x7: px(28),
-    x8: px(32),
-    x9: px(36),
-    x10: px(40),
-  },
-  borderRadii: {
-    x0: px(0),
-    x1: px(4),
-    x2: px(8),
-    x3: px(12),
-    x4: px(16),
-    x5: px(20),
-    x6: px(24),
-    x7: px(28),
-    x8: px(32),
-    x9: px(36),
-    x10: px(40),
-  },
-  zIndices: {
-    '1': 1,
-    '9': 9,
-    '19': 9,
-    '29': 9,
-    '39': 9,
-    '49': 9,
-    '59': 9,
-    '69': 9,
-    '79': 9,
-    '89': 9,
-    '99': 99,
-    '199': 199,
-    '299': 299,
-    '399': 399,
-    '499': 499,
-    '599': 599,
-    '699': 699,
-    '799': 799,
-    '899': 899,
-    '999': 999,
-  },
-  colors: {
-    ...palette,
-    background: palette.gray50,
-    mask: palette.gray600,
-    border: palette.gray200,
-    icon: palette.gray300,
-    disabled: palette.gray300,
-    text: palette.gray500,
-    text_active: palette.white,
-    primary_text: palette.black,
-    primary_background: palette.white,
-    cardPrimaryBackground: palette.func300,
-    cardSecondaryBackground: palette.func600,
-  },
-  textVariants: {
-    defaults: {},
-    h0: {
-      fontWeight: 'bold',
-      fontSize: px(28),
+const createLightTheme = () =>
+  createTheme({
+    spacing: {
+      x0: px(0),
+      x1: px(4),
+      x2: px(8),
+      x3: px(12),
+      x4: px(16),
+      x5: px(20),
+      x6: px(24),
+      x7: px(28),
+      x8: px(32),
+      x9: px(36),
+      x10: px(40),
     },
-    h1: {
-      fontWeight: 'bold',
-      fontSize: px(18),
+    borderRadii: {
+      x0: px(0),
+      x1: px(4),
+      x2: px(8),
+      x3: px(12),
+      x4: px(16),
+      x5: px(20),
+      x6: px(24),
+      x7: px(28),
+      x8: px(32),
+      x9: px(36),
+      x10: px(40),
     },
-    h2: {
-      fontWeight: 'bold',
-      fontSize: px(16),
+    zIndices: {
+      '1': 1,
+      '9': 9,
+      '19': 9,
+      '29': 9,
+      '39': 9,
+      '49': 9,
+      '59': 9,
+      '69': 9,
+      '79': 9,
+      '89': 9,
+      '99': 99,
+      '199': 199,
+      '299': 299,
+      '399': 399,
+      '499': 499,
+      '599': 599,
+      '699': 699,
+      '799': 799,
+      '899': 899,
+      '999': 999,
     },
-    h3: {
-      fontWeight: 'bold',
-      fontSize: px(14),
+    colors: {
+      ...palette,
+      background: palette.gray50,
+      mask: palette.gray600,
+      border: palette.gray200,
+      icon: palette.gray300,
+      disabled: palette.gray300,
+      text: palette.gray500,
+      text_active: palette.white,
+      primary_text: palette.black,
+      primary_background: palette.white,
+      cardPrimaryBackground: palette.func300,
+      cardSecondaryBackground: palette.func600,
     },
-    h4: {},
-    h5: {},
-    h6: {},
-    h7: {},
-    h8: {},
-    h9: {},
-    p0: {
-      fontSize: px(16),
+    textVariants: {
+      defaults: {},
+      h0: {
+        fontWeight: 'bold',
+        fontSize: px(28),
+      },
+      h1: {
+        fontWeight: 'bold',
+        fontSize: px(18),
+      },
+      h2: {
+        fontWeight: 'bold',
+        fontSize: px(16),
+      },
+      h3: {
+        fontWeight: 'bold',
+        fontSize: px(14),
+      },
+      h4: {},
+      h5: {},
+      h6: {},
+      h7: {},
+      h8: {},
+      h9: {},
+      p0: {
+        fontSize: px(16),
+      },
+      p1: {
+        fontSize: px(14),
+      },
+      p2: {
+        fontSize: px(12),
+      },
+      p3: {
+        fontSize: px(10),
+      },
+      p4: {},
+      p5: {},
+      p6: {},
+      p7: {},
+      p8: {},
+      p9: {},
+      d0: {
+        fontWeight: 'bold',
+        fontSize: px(24),
+      },
+      d1: {
+        fontWeight: 'bold',
+        fontSize: px(18),
+      },
+      d2: {
+        fontWeight: 'bold',
+        fontSize: px(12),
+      },
+      d3: {},
+      d4: {},
+      d5: {},
+      d6: {},
+      d7: {},
+      d8: {},
+      d9: {},
     },
-    p1: {
-      fontSize: px(14),
+    cardVariants: {
+      defaults: {
+        padding: 'x3', // 这里的优先级，比createVariant方法的defaults里面的高，所以不会被覆盖掉
+        borderRadius: 'x2',
+      },
+      primary: {
+        backgroundColor: 'cardPrimaryBackground',
+      },
+      secondary: {
+        backgroundColor: 'cardSecondaryBackground',
+      },
     },
-    p2: {
-      fontSize: px(12),
-    },
-    p3: {
-      fontSize: px(10),
-    },
-    p4: {},
-    p5: {},
-    p6: {},
-    p7: {},
-    p8: {},
-    p9: {},
-    d0: {
-      fontWeight: 'bold',
-      fontSize: px(24),
-    },
-    d1: {
-      fontWeight: 'bold',
-      fontSize: px(18),
-    },
-    d2: {
-      fontWeight: 'bold',
-      fontSize: px(12),
-    },
-    d3: {},
-    d4: {},
-    d5: {},
-    d6: {},
-    d7: {},
-    d8: {},
-    d9: {},
-  },
-  cardVariants: {
-    defaults: {
-      padding: 'x3', // 这里的优先级，比createVariant方法的defaults里面的高，所以不会被覆盖掉
-      borderRadius: 'x2',
-    },
-    primary: {
-      backgroundColor: 'cardPrimaryBackground',
-    },
-    secondary: {
-      backgroundColor: 'cardSecondaryBackground',
-    },
-  },
-  theme: 'light',
-});
-export type Theme = typeof lightTheme;
+    theme: 'light',
+  });
+export type Theme = ReturnType<typeof createLightTheme>;
 export type Spacing = keyof Theme['spacing'];
 export type Color = keyof Theme['colors'];
 export type Variant = keyof Omit<Theme['textVariants'], 'defaults'>;
@@ -221,8 +222,8 @@ const darkPalette = {
   gray900: 'transparent',
 };
 
-const darkTheme: Theme = {
-  ...lightTheme,
+const createDarkTheme = () => ({
+  ...createLightTheme(),
   colors: {
     ...darkPalette,
     background: darkPalette.gray50,
@@ -238,6 +239,6 @@ const darkTheme: Theme = {
     cardSecondaryBackground: palette.func600,
   },
   theme: 'dark',
-};
+});
 
-export {lightTheme, darkTheme};
+export {createLightTheme, createDarkTheme};
