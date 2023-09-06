@@ -1,5 +1,5 @@
 import {ThemeProvider} from '@td-design/taro-style';
-import useChangeTheme from './pages/useChangeTheme';
+import useChangeTheme from './hooks/useChangeTheme';
 import './animate.css';
 
 function Main({children}: React.PropsWithChildren<any>) {

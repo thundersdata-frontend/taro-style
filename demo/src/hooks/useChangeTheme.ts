@@ -1,5 +1,5 @@
 import Taro, {useLaunch} from '@tarojs/taro';
-import {useMemo, useState} from 'react';
+import {useMemo, useState} from '@taro-hooks/core';
 import {createDarkTheme, createLightTheme} from '@/components/theme';
 import {createShareModel} from '@/createShareModel';
 
